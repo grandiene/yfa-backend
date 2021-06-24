@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="500" pageHeight="500" columnWidth="465" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="20" uuid="af2b9c69-a6de-43a8-a959-0f8039e3ba8e">
+	<field name="tanggalTransaksi" class="java.lang.String"/>
+	<field name="resi" class="java.lang.String"/>
+	<field name="cityName" class="java.lang.String"/>
+	<field name="provinceName" class="java.lang.String"/>
+	<field name="namaPenerima" class="java.lang.String"/>
+	<field name="kategoriLayanan" class="java.lang.String"/>
+	<field name="estimasi" class="java.lang.String"/>
+	<field name="ongkosKirim" class="java.lang.Integer"/>
+	<group name="resi">
+		<groupExpression><![CDATA[$F{resi}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<rectangle>
+				<reportElement x="50" y="0" width="400" height="81" forecolor="#1EABFF" backcolor="#1EABFF" uuid="13b98414-7e34-47cb-9f09-1b1cd9890ce5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="135" y="56" width="230" height="21" forecolor="#FFFFFF" uuid="288394e8-3169-47c4-9cdc-d627d69a0f99"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transaksi Berhasil]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="227" y="9" width="43" height="41" forecolor="#FFFFFF" uuid="762d3b20-e037-434d-a747-9c71edb423d7"/>
+			</ellipse>
+      <image>
+        <reportElement x="235" y="18" width="27" height="24" uuid="854ac228-0f97-428a-a427-5553997820c1"/>
+        <imageExpression><![CDATA["C:/Users/user/Downloads/ok.png"]]></imageExpression>
+      </image>
+		</band>
+	</title>
+	<detail>
+		<band height="231" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="25" width="81" height="17" uuid="5b8cedd5-4765-4181-bc7b-a922e7ff55f5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="42" width="81" height="17" uuid="e68011b1-5edd-4041-97f8-9795820cf6d1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Resi]]></text>
+			</staticText>
+			<line>
+				<reportElement key="" x="48" y="77" width="401" height="1" forecolor="#DED9D9" uuid="59a3e37f-9c85-45ad-b143-d2c6eefc0d38">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+      <textField>
+        <reportElement x="250" y="27" width="150" height="17" uuid="e823473d-7680-43be-9b9c-a5c6d61ea93f"/>
+        <textElement textAlignment="Right" verticalAlignment="Middle"/>
+        <textFieldExpression><![CDATA[$F{tanggalTransaksi}]]></textFieldExpression>
+      </textField>
+			<textField>
+				<reportElement x="300" y="44" width="100" height="17" uuid="7dc4cc29-8b5d-486b-9ef5-cb174cb269bd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{resi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="91" width="162" height="15" uuid="c5da9035-b980-478f-ad1e-afe0004a57d2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{cityName} + ", " + $F{provinceName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="89" width="81" height="17" uuid="12f7b3d2-38ad-43fb-a062-d8d340744e9b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tujuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="106" width="81" height="17" uuid="d44029db-4785-4ebd-b53f-2cbbc7bde6cd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Penerima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="123" width="81" height="17" uuid="cc474ebf-c1b6-40bf-a691-74b41934d388"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Jenis Layanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="140" width="81" height="17" uuid="840bbf7c-c9db-42f2-8b67-e9986843face"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Estimasi]]></text>
+			</staticText>
+			<line>
+				<reportElement key="" x="48" y="175" width="401" height="1" forecolor="#DED9D9" uuid="f7b4dae1-c997-47c4-8d99-1eb72d9279b3">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="100" y="188" width="81" height="17" forecolor="#1EABFF" uuid="4c2d761f-c864-4402-827f-16a56e6ba71a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Biaya]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="188" width="103" height="17" forecolor="#1EABFF" uuid="b112e9a6-9497-47ff-8f07-4a84f04af70e"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rp" + $F{ongkosKirim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="140" width="106" height="17" uuid="1fe710e3-ef8e-42a6-810e-4e71f8485d49"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{estimasi} + " Hari"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="123" width="106" height="17" uuid="e52a5c13-ec4b-47f6-966b-051190827770"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{kategoriLayanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="107" width="106" height="15" uuid="bdb73d8a-78d8-427a-942c-cca20dfb4b59"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{namaPenerima}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="56" splitType="Stretch">
+			<rectangle>
+				<reportElement x="50" y="27" width="400" height="24" forecolor="#1EABFF" backcolor="#1EABFF" uuid="2f87b8cf-4548-4598-a77c-4e6ffa8333e2"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+</jasperReport>

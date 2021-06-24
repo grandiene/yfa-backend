@@ -1,0 +1,32 @@
+{
+  "name": "almasaeed2010/adminlte",
+  "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+  "homepage": "http://adminlte.io/",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "responsive",
+    "back-end",
+    "template",
+    "theme",
+    "web",
+    "admin"
+  ],
+  "authors": [
+    {
+      "name": "Colorlib"
+    }
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/ColorlibHQ/AdminLTE/issues"
+  },
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
