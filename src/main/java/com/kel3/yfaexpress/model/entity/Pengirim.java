@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 @Table(name = Pengirim.TABLE_NAME)
 public class Pengirim {
-    public static final String TABLE_NAME = "t_pengirim";
+    public static final String TABLE_NAME = "pengirims";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)

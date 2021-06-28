@@ -8,5 +8,10 @@ import java.util.List;
 
 @Repository
 public interface KurirRepository extends JpaRepository<Kurir, Integer> {
+
     List<Kurir> findAllByIdKurir(Integer idKurir);
+
+    Kurir findByIdKurir(Integer idKurir);
+
+    List<Kurir> findAllByIsDeleteEquals(Integer isDelete);
 }

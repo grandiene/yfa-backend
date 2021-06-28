@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = Penerima.TABLEPENERIMA)
 @Data
 public class Penerima {
-    public static final String TABLEPENERIMA = "t_penerima";
+    public static final String TABLEPENERIMA = "penerimas";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator=TABLEPENERIMA)
