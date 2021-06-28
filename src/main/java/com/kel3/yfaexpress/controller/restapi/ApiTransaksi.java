@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.security.RolesAllowed;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,6 +48,7 @@ public class ApiTransaksi {
     @Autowired
     private KurirRepository kurirRepository;
 
+    @RolesAllowed({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping()
     public List<TransaksiDto> getListTransaksi() {
         List<Transaksi> transaksiList = transaksiRepository.findAll();
@@ -57,6 +59,7 @@ public class ApiTransaksi {
         return transaksiDtos;
     }
 
+    @RolesAllowed("ROLE_USER")
     @GetMapping("/history/{email}")
     public List<TransaksiDto> getHistory(@PathVariable String email) {
         List<Transaksi> transaksiList = transaksiRepository.findAllByUseraa_Email(email);
@@ -68,7 +71,7 @@ public class ApiTransaksi {
         return transaksiDtos;
     }
 
-
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/{id}")
     public TransaksiDto getTransaksi(@PathVariable Integer id) {
         Transaksi transaksi = transaksiRepository.findById(id).get();
@@ -82,6 +85,7 @@ public class ApiTransaksi {
         return transaksiDto;
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/admin")
     public List<TransaksiDto> getListTransaksiAdmin() {
         List<Transaksi> transaksiList = transaksiRepository.findAllByStatusDeliveryIsNotInAndIsDeleteEquals(Collections.singletonList("Terkirim"), 0);
@@ -104,6 +108,7 @@ public class ApiTransaksi {
         return transaksiDto;
     }
 
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping
     public TransaksiDto save(@RequestBody TransaksiDto transaksiDto) {
         Pengirim pengirim = modelMapper.map(transaksiDto, Pengirim.class);
@@ -141,6 +146,7 @@ public class ApiTransaksi {
         return foto;
     }
 
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/getImage/{idTransaksi}")
     public String getFotoBase64(@PathVariable Integer idTransaksi) throws IOException {
         Transaksi transaksi = transaksiRepository.findById(idTransaksi).get();
@@ -152,6 +158,7 @@ public class ApiTransaksi {
         return img;
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping(value="/admin", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Transaksi editSave(@RequestPart(value = "transaksi", required = true) TransaksiDto transaksiDto,
                                  @RequestPart(value = "foto", required = false) MultipartFile file) throws Exception {
@@ -200,6 +207,7 @@ public class ApiTransaksi {
         return transaksi;
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/delete")
     public void delete(@RequestBody TransaksiDto transaksiDto) {
         Pengirim pengirim = modelMapper.map(transaksiDto, Pengirim.class);
