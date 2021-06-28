@@ -57,17 +57,17 @@ public class ApiTransaksi {
         return transaksiDtos;
     }
 
-//    @GetMapping("/history/")
-//    public List<TransaksiDto> getHistory(Authentication authentication) {
-//        List<Transaksi> transaksiList = transaksiRepository.findAllByUseraa_Email(authentication.getName());
-//        List<TransaksiDto> transaksiDtos =
-//                transaksiList.stream()
-//                        .map(transaksi -> mapTransaksiToTransaksiDto(transaksi))
-//                        .collect(Collectors.toList());
+    @GetMapping("/history/{email}")
+    public List<TransaksiDto> getHistory(@PathVariable String email) {
+        List<Transaksi> transaksiList = transaksiRepository.findAllByUseraa_Email(email);
+        List<TransaksiDto> transaksiDtos =
+                transaksiList.stream()
+                        .map(transaksi -> mapTransaksiToTransaksiDto(transaksi))
+                        .collect(Collectors.toList());
 //        System.out.println(authentication.getName());
-//        return transaksiDtos;
-//    }
-//
+        return transaksiDtos;
+    }
+
 
     @GetMapping("/{id}")
     public TransaksiDto getTransaksi(@PathVariable Integer id) {
