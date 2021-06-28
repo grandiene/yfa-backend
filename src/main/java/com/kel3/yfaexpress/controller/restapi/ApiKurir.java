@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.security.RolesAllowed;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,6 +30,8 @@ public class ApiKurir {
     private ModelMapper modelMapper;
     @Autowired
     private KurirService kurirService;
+
+    @RolesAllowed({"ROLE_ADMIN"})
     @GetMapping() // mengambil data ke db
     public List<KurirDto> getListKurir() {
         List<Kurir> kurirList = kurirRepository.findAllByIsDeleteEquals(0);
@@ -52,6 +55,7 @@ public class ApiKurir {
     }
 
     //getmapping saat edit
+    @RolesAllowed({"ROLE_ADMIN"})
     @GetMapping("/{id}")
     public KurirDto getKurir(@PathVariable Integer id) {
         Kurir kurir = kurirRepository.findById(id).get();
@@ -79,6 +83,7 @@ public class ApiKurir {
     }
 
     //get image react
+    @RolesAllowed({"ROLE_ADMIN"})
     @GetMapping("/getImage/{idKurir}")
     public String getImage(@PathVariable Integer idKurir) throws IOException {
         Kurir kurir = kurirRepository.findById(idKurir).get();
@@ -92,6 +97,7 @@ public class ApiKurir {
     }
 
     //insert dan edit
+    @RolesAllowed({"ROLE_ADMIN"})
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public KurirDto editSave(@RequestPart(value = "kurir", required = true) KurirDto kurirDto,
                              @RequestPart(value = "file", required = false) MultipartFile file) throws Exception {
@@ -99,7 +105,6 @@ public class ApiKurir {
         Kurir kurir = modelMapper.map(kurirDto, Kurir.class);
         kurir.setIdKurir(kurirDto.getIdKurir());
         kurir.setIsDelete(0);
-
         if (file == null) {
             kurir.setFile(kurirRepository.findByIdKurir(kurirDto.getIdKurir()).getFile());
         } else {
@@ -117,6 +122,7 @@ public class ApiKurir {
     }
 
     //delete
+    @RolesAllowed({"ROLE_ADMIN"})
     @PostMapping("/delete")
     public void delete(@RequestBody KurirDto kurirDto) {
         Kurir kurir = modelMapper.map(kurirDto, Kurir.class);
